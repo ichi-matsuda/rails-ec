@@ -1,3 +1,9 @@
+# EC site on ruby on rails
+
+[【実践 Ruby on Rails】Stripe を使って EC サイトを作ろう（Rails 7 対応）](https://zenn.dev/farstep/books/7f169cdc597ada/viewer/5ff63c)
+
+↑ これの実装
+
 # An example Rails + Docker app
 
 ![CI](https://github.com/nickjj/docker-rails-example/workflows/CI/badge.svg?branch=main)
@@ -62,30 +68,30 @@ Here's a run down on what's different. You can also use this as a guide to
 Dockerize an existing Rails app.
 
 - **Core**:
-    - Use PostgreSQL (`-d postgresql)` as the primary SQL database
-    - Use Redis as the cache back-end
-    - Use Sidekiq as a background worker through Active Job
-    - Use a standalone Action Cable process
+  - Use PostgreSQL (`-d postgresql)` as the primary SQL database
+  - Use Redis as the cache back-end
+  - Use Sidekiq as a background worker through Active Job
+  - Use a standalone Action Cable process
 - **App Features**:
-    - Add `pages` controller with a home page
-    - Add `up` controller with 2 health check related actions
+  - Add `pages` controller with a home page
+  - Add `up` controller with 2 health check related actions
 - **Config**:
-    - Log to STDOUT so that Docker can consume and deal with log output 
-    - Credentials are removed (secrets are loaded in with an `.env` file)
-    - Extract a bunch of configuration settings into environment variables
-    - Rewrite `config/database.yml` to use environment variables
-    - `.yarnc` sets a custom `node_modules/` directory
-    - `config/initializers/rack_mini_profiler.rb` to enable profiling Hotwire Turbo Drive
-    - `config/initializers/assets.rb` references a custom `node_modules/` directory
-    - `config/routes.rb` has Sidekiq's dashboard ready to be used but commented out for safety
-    - `Procfile.dev` has been removed since Docker Compose handles this for us
+  - Log to STDOUT so that Docker can consume and deal with log output
+  - Credentials are removed (secrets are loaded in with an `.env` file)
+  - Extract a bunch of configuration settings into environment variables
+  - Rewrite `config/database.yml` to use environment variables
+  - `.yarnc` sets a custom `node_modules/` directory
+  - `config/initializers/rack_mini_profiler.rb` to enable profiling Hotwire Turbo Drive
+  - `config/initializers/assets.rb` references a custom `node_modules/` directory
+  - `config/routes.rb` has Sidekiq's dashboard ready to be used but commented out for safety
+  - `Procfile.dev` has been removed since Docker Compose handles this for us
 - **Assets**:
-    - Use esbuild (`-j esbuild`) and TailwindCSS (`-c tailwind`)
-    - Add `postcss-import` support for `tailwindcss` by using the `--postcss` flag
-    - Add ActiveStorage JavaScript package
+  - Use esbuild (`-j esbuild`) and TailwindCSS (`-c tailwind`)
+  - Add `postcss-import` support for `tailwindcss` by using the `--postcss` flag
+  - Add ActiveStorage JavaScript package
 - **Public:**
-    - Custom `502.html` and `maintenance.html` pages
-    - Generate favicons using modern best practices
+  - Custom `502.html` and `maintenance.html` pages
+  - Generate favicons using modern best practices
 
 Besides the Rails app itself, a number of new Docker related files were added
 to the project which would be any file having `*docker*` in its name. Also
@@ -128,9 +134,9 @@ cp .env.example .env
 
 #### Build everything:
 
-*The first time you run this it's going to take 5-10 minutes depending on your
+_The first time you run this it's going to take 5-10 minutes depending on your
 internet connection speed and computer's hardware specs. That's because it's
-going to download a few Docker images and build the Ruby + Yarn dependencies.*
+going to download a few Docker images and build the Ruby + Yarn dependencies._
 
 ```sh
 docker compose up --build
@@ -155,7 +161,7 @@ variables to fix this.
 ./run rails db:setup
 ```
 
-*We'll go over that `./run` script in a bit!*
+_We'll go over that `./run` script in a bit!_
 
 #### Check it out in a browser:
 
@@ -216,9 +222,9 @@ This comes in handy to run various Docker commands because sometimes these
 commands can be a bit long to type. Feel free to add as many convenience
 functions as you want. This file's purpose is to make your experience better!
 
-*If you get tired of typing `./run` you can always create a shell alias with
+_If you get tired of typing `./run` you can always create a shell alias with
 `alias run=./run` in your `~/.bash_aliases` or equivalent file. Then you'll be
-able to run `run` instead of `./run`.*
+able to run `run` instead of `./run`._
 
 ## Running a script to automate renaming the project
 
@@ -250,9 +256,9 @@ is going to:
 - Perform a number of find / replace actions
 - Optionally initialize a new git repo for you
 
-*Afterwards you can delete this script because its only purpose is to assist in
+_Afterwards you can delete this script because its only purpose is to assist in
 helping you change this project's name without depending on any complicated
-project generator tools or 3rd party dependencies.*
+project generator tools or 3rd party dependencies._
 
 If you're not comfy running the script or it doesn't work for whatever reasons
 you can [check it
@@ -273,10 +279,10 @@ docker compose up --build
 ./run rails db:setup
 ```
 
-*If you get an error upping the project related to `RuntimeError: invalid
+_If you get an error upping the project related to `RuntimeError: invalid
 bytecode` then you have old `tmp/` files sitting around related to the old
 project name, you can run `./run clean` to clear all temporary files and fix
-the error.*
+the error._
 
 #### Sanity check to make sure the tests still pass:
 
@@ -362,7 +368,7 @@ couple of free and paid resources. There's Google too!
 
 ### Learn more about Docker and Ruby on Rails
 
-#### Official documentation 
+#### Official documentation
 
 - <https://docs.docker.com/>
 - <https://guides.rubyonrails.org/>
