@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   with_options presence: true do
     validates :name
-    validate :status
+    validates :status
   end
   enum status: {
     normal: 0,
